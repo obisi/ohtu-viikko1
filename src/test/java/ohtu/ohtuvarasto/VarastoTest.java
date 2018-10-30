@@ -139,6 +139,8 @@ public class VarastoTest {
     }
 
     @Test
+
+    // mentit
     public void SaldVarasto() {
         Varasto v = new Varasto(10, 5);
         assertEquals(5, v.paljonkoMahtuu(), vertailuTarkkuus);
