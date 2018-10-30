@@ -65,4 +65,85 @@ public class VarastoTest {
         assertEquals(4, varasto.paljonkoMahtuu(), vertailuTarkkuus);
     }
 
+    @Test
+    public void laittaaLiikaa() {
+        varasto.lisaaVarastoon(15);
+
+        // varastossa pitäisi olla 0
+        assertEquals(0, varasto.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void ottaaLiikaa() {
+        varasto.lisaaVarastoon(8);
+
+
+        // varastossa pitäisi saada vain 8
+        assertEquals(8, varasto.otaVarastosta(15), vertailuTarkkuus);
+    }
+
+    @Test
+    public void haeTilavuus() {
+        assertEquals(10, varasto.getTilavuus(), vertailuTarkkuus);
+    }
+
+
+    @Test
+    public void haeSaldo() {
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void tulosta() {
+        assertEquals("saldo = 0.0, vielä tilaa 10.0".equals(varasto.toString()), true);
+    }
+
+    @Test
+    public void mahtuuPaljonko() {
+        varasto.lisaaVarastoon(7);
+        assertEquals(3, varasto.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void haeNeg() {
+        assertEquals(0, varasto.otaVarastosta(-1), vertailuTarkkuus);
+    }
+    @Test
+    public void lisaaNeg() {
+        varasto.lisaaVarastoon(-1);
+        assertEquals(0, varasto.otaVarastosta(1), vertailuTarkkuus);
+    }
+
+    @Test
+    public void virhVarasto() {
+        Varasto v = new Varasto(-1);
+        assertEquals(0, v.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void virhSaldVarasto() {
+        Varasto v = new Varasto(10, -1);
+        assertEquals(10, v.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void virhSaldvirhVarasto() {
+        Varasto v = new Varasto(-1, -1);
+        assertEquals(0, v.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void liikaSaldVarasto() {
+        Varasto v = new Varasto(10, 15);
+        assertEquals(0, v.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void SaldVarasto() {
+        Varasto v = new Varasto(10, 5);
+        assertEquals(5, v.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+
+
+
 }
