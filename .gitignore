@@ -2,3 +2,5 @@
 /build/
 gradle.properties
 /.nb-gradle/
+/NhlStatistics1/.nb-gradle/
+/NhlStatistics1/build/
